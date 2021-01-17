@@ -1,6 +1,6 @@
 package com.github.zelmothedragon.eyeofmaven.service;
 
-import com.github.zelmothedragon.eyeofmaven.model.Project;
+import com.github.zelmothedragon.eyeofmaven.model.Context;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.nio.file.Files;
@@ -12,38 +12,62 @@ import org.apache.maven.shared.invoker.InvokerLogger;
 import org.apache.maven.shared.invoker.MavenInvocationException;
 
 /**
+ * Service Maven.
  *
  * @author MOSELLE Maxime
  */
 public class MavenService {
 
-    private final Project project;
+    /**
+     * Contexte d'environnement du projet.
+     */
+    private final Context context;
 
+    /**
+     * Commande Maven programmable.
+     */
     private final DefaultInvocationRequest request;
 
+    /**
+     * Invocation de la commande Maven.
+     */
     private final DefaultInvoker invoker;
 
+    /**
+     * Journalisation.
+     */
     private final InvokerLogger logger;
 
-    public MavenService(Project project) {
-        this.project = project;
+    /**
+     * Constructeur.
+     *
+     * @param context Contexte d'environnement du projet
+     */
+    public MavenService(Context context) {
+        this.context = context;
 
         this.request = new DefaultInvocationRequest();
         this.request.setBatchMode(true);
         this.request.setShowErrors(false);
         this.request.setThreads(System.getProperty("threads", "1"));
-        this.request.setPomFile(project.getPom());
-        this.request.setGoals(project.getMavenGoals());
-        this.request.setProperties(project.getMavenProperties());
+        this.request.setPomFile(context.getPom());
+        this.request.setGoals(context.getMavenGoals());
+        this.request.setProperties(context.getMavenProperties());
 
         this.invoker = new DefaultInvoker();
-        this.invoker.setMavenHome(project.getMavenHome());
+        this.invoker.setMavenHome(context.getMavenHome());
         this.invoker.setOutputHandler(null);
         this.invoker.setLogger(null);
 
         this.logger = this.invoker.getLogger();
     }
 
+    /**
+     * Compiler le projet.
+     *
+     * @return La valeur {@code true} si la compilation est un succès, sinon la
+     * valeur {@code false} est retournée
+     */
     public boolean build() {
         boolean buildSuccess;
         try {
@@ -56,10 +80,13 @@ public class MavenService {
         return buildSuccess;
     }
 
+    /**
+     * Annuler le déploiement du projet.
+     */
     public void undeploy() {
         try {
             Files
-                    .find(project.getServerAutodeployDirectory(), 1, this::matchModule)
+                    .find(context.getServerAutodeployDirectory(), 1, this::matchModule)
                     .forEach(this::deleteModule);
 
         } catch (IOException ex) {
@@ -67,10 +94,13 @@ public class MavenService {
         }
     }
 
+    /**
+     * Déployer le projet.
+     */
     public void deploy() {
-        var module = project.getFinalName();
-        var source = project.getTarget().resolve(module);
-        var destination = project.getServerAutodeployDirectory().resolve(module);
+        var module = context.getFinalName();
+        var source = context.getTarget().resolve(module);
+        var destination = context.getServerAutodeployDirectory().resolve(module);
         try {
             if (Files.exists(source)) {
                 Files
@@ -84,10 +114,23 @@ public class MavenService {
         }
     }
 
+    /**
+     * Rechercher le module déployé
+     *
+     * @param path Chemin de base pour la recherche
+     * @param attributes Attribut de fichier
+     * @return La valeur {@code true} si le module est trouvé, sinon la valeur
+     * {@code false} est retournée
+     */
     private boolean matchModule(final Path path, final BasicFileAttributes attributes) {
-        return path.endsWith(project.getFinalName());
+        return path.endsWith(context.getFinalName());
     }
 
+    /**
+     * Supprimer un module si il existe.
+     *
+     * @param module Chemin du module à supprimer
+     */
     private void deleteModule(final Path module) {
         try {
             Files.deleteIfExists(module);

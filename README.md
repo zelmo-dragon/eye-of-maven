@@ -48,7 +48,7 @@ maven.goals         = clean package
 # Propriétés Maven a ajouter a la commande (Ne pas suffixer de -D)
 maven.properties    = maven.test.skip=true maven.source.skip=true
 
-# Emplacement racine du projet Maven a déployer automatiquement
+# Emplacement racine du projet Maven à déployer automatiquement
 project.directory   = .
 
 # Emplacement du répertoire de déploiement automatique du serveur d'application
