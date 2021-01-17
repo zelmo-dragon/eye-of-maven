@@ -6,12 +6,51 @@
     
     <modelVersion>4.0.0</modelVersion>
     
+    <name>eye-of-maven</name>
+    <description>Eye Of Maven</description>
+    <inceptionYear>2021</inceptionYear>
+    <url>https://github.com/ZelmoTheDragon/eye-of-maven</url>
+    
+    <licenses>
+        <license>
+            <name>CeCILL 2.1</name>
+            <url>http://cecill.info/licences/Licence_CeCILL_V2.1-en.txt</url>
+            <comments>Licence française de logiciel libre</comments>
+        </license>
+    </licenses>
+    
+    <organization>
+        <name>GitHub</name>
+        <url>https://github.com</url>
+    </organization>
+    
+    <issueManagement>
+        <system>Github</system>
+        <url>https://github.com/ZelmoTheDragon/eye-of-maven/issues</url>
+    </issueManagement>
+    
+    <developers>
+        <developer>
+            <id>ZelmoTheDragon</id>
+            <name>MOSELLE Maxime</name>
+            <email>maximemoselle@gmail.com</email>
+            <organization>GitHub</organization>
+            <organizationUrl>https://github.com</organizationUrl>
+            <timezone>Europe/Paris</timezone>
+            <url>https://github.com/ZelmoTheDragon</url>
+            <roles>
+                <role>developer</role>
+            </roles>
+        </developer>
+    </developers>
+    
     <groupId>com.github.zelmothedragon</groupId>
     <artifactId>eye-of-maven</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>jar</packaging>
     
     <properties>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <version.java>11</version.java>
 
@@ -19,12 +58,16 @@
     </properties>
     
     <dependencies>
+        
+        <!-- Exécuter des commandes Maven -->
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
             <artifactId>maven-invoker</artifactId>
             <version>3.0.1</version>
             <scope>compile</scope>
         </dependency>
+        
+        <!-- Lire le fichier 'pom.xml' -->
         <dependency>
             <groupId>org.apache.maven</groupId>
             <artifactId>maven-model</artifactId>
@@ -49,6 +92,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-assembly-plugin</artifactId>
                 <version>3.1.0</version>
+                <!-- Les dépendances sont compilées dans l'exécutable Java. -->
                 <configuration>
                     <appendAssemblyId>false</appendAssemblyId>
                     <archive>
