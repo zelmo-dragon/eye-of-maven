@@ -1,0 +1,6 @@
+
+# Maven
+**/target 
+
+# NetBeans IDE
+**/nb-configuration.xml
