@@ -4,3 +4,6 @@
 
 # NetBeans IDE
 **/nb-configuration.xml
+
+# IDEA
+.idea

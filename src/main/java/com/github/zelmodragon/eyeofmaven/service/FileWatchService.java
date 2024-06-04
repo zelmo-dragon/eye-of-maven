@@ -1,6 +1,7 @@
-package com.github.zelmothedragon.eyeofmaven.service;
+package com.github.zelmodragon.eyeofmaven.service;
 
-import com.github.zelmothedragon.eyeofmaven.model.Context;
+import com.github.zelmodragon.eyeofmaven.model.Context;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;

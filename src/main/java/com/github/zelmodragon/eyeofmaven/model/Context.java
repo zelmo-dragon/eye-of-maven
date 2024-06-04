@@ -1,6 +1,6 @@
-package com.github.zelmothedragon.eyeofmaven.model;
+package com.github.zelmodragon.eyeofmaven.model;
 
-import com.github.zelmothedragon.eyeofmaven.util.Configuration;
+import com.github.zelmodragon.eyeofmaven.util.Configuration;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;

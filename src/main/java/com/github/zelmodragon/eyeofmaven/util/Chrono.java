@@ -1,4 +1,4 @@
-package com.github.zelmothedragon.eyeofmaven.util;
+package com.github.zelmodragon.eyeofmaven.util;
 
 /**
  * Chronomètre.

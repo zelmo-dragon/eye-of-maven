@@ -1,6 +1,6 @@
-package com.github.zelmothedragon.eyeofmaven;
+package com.github.zelmodragon.eyeofmaven;
 
-import com.github.zelmothedragon.eyeofmaven.controller.AutoDeployController;
+import com.github.zelmodragon.eyeofmaven.controller.AutoDeployController;
 
 /**
  * Classe principale.

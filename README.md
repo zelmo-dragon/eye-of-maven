@@ -23,7 +23,7 @@ Il utilise l'outil **Maven** en version 3.6.2.
 
 Récupération du projet:
 ~~~
-    git clone https://github.com/ZelmoTheDragon/eye-of-maven.git
+    git clone https://github.com/zelmo-dragon/eye-of-maven.git
     cd eye-of-maven
     mvn install
 ~~~

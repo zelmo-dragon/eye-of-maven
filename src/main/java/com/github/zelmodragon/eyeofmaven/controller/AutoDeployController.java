@@ -1,10 +1,10 @@
-package com.github.zelmothedragon.eyeofmaven.controller;
+package com.github.zelmodragon.eyeofmaven.controller;
 
-import com.github.zelmothedragon.eyeofmaven.service.ConfigurationService;
-import com.github.zelmothedragon.eyeofmaven.service.FileWatchService;
-import com.github.zelmothedragon.eyeofmaven.service.MavenService;
-import com.github.zelmothedragon.eyeofmaven.util.Chrono;
-import com.github.zelmothedragon.eyeofmaven.util.Configuration;
+import com.github.zelmodragon.eyeofmaven.service.ConfigurationService;
+import com.github.zelmodragon.eyeofmaven.service.FileWatchService;
+import com.github.zelmodragon.eyeofmaven.service.MavenService;
+import com.github.zelmodragon.eyeofmaven.util.Chrono;
+import com.github.zelmodragon.eyeofmaven.util.Configuration;
 import org.apache.maven.shared.invoker.InvokerLogger;
 import org.apache.maven.shared.invoker.SystemOutLogger;
 
@@ -54,13 +54,13 @@ public class AutoDeployController {
      * @param service Service de déploiement Maven
      */
     private void listener(final MavenService service) {
-        this.logger.info("Change dectected !");
+        this.logger.info("Change detected !");
         timer.start();
 
         this.logger.info("Building module...");
         if (service.build()) {
 
-            this.logger.info("Undeploying previous module...");
+            this.logger.info("Undeploy previous module...");
             service.undeploy();
 
             this.logger.info("Deploying module...");
