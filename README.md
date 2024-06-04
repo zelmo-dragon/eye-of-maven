@@ -16,8 +16,8 @@ Cette application est conçue pour fonctionner avec les applications Java web au
 
 ## Environnement
 
-Ce projet est réalisé en **Java 11** *(OpenJDK)*.
-Il utilise l'outil **Maven** en version 3.6.2.
+Ce projet est réalisé en **Java 21** *(OpenJDK)*.
+Il utilise l'outil **Maven** en version 3.8.7.
 
 ### Exécution
 
